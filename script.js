@@ -115,31 +115,46 @@ function initializeSwiper() {
     // Create a new div for the swiper, and replace the <ul> with it
     const swiperContainer = document.createElement('div');
     swiperContainer.className = 'swiper';
-    swiperContainer.innerHTML = `
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <h3>Reduce, reuse, and recycle</h3>
-                <p>Minimizing waste can significantly reduce environmental impact. Practice recycling materials and reusing items whenever possible.</p>
+
+    const slidesData = [
+        {
+            title: "Reduce, reuse, and recycle",
+            content: "Minimizing waste can significantly reduce environmental impact. Practice recycling materials and reusing items whenever possible.",
+            bgImage: "url('https://i.imgur.com/rVVYreK.jpeg')"
+        },
+        {
+            title: "Volunteer for cleanups in your community",
+            content: "Join local efforts to clean up rivers, parks, and streets to help enhance your community's environmental health.",
+            bgImage: "url('https://i.imgur.com/mc6Tfvv.jpeg')"
+        },
+        {
+            title: "Conserve water and electricity",
+            content: "Reducing your consumption of water and energy reduces your carbon footprint and saves resources.",
+            bgImage: "url('https://i.imgur.com/zWuTAIH.jpeg')"
+        },
+        {
+            title: "Plant a tree",
+            content: "Trees provide oxygen, improve air quality, conserve water, preserve soil, and support wildlife.",
+            bgImage: "url('https://i.imgur.com/mjpOqZS.jpeg')"
+        },
+        {
+            title: "Educate others about environmental conservation",
+            content: "Spreading awareness and educating people about environmental issues is crucial for global change.",
+            bgImage: "url('https://i.imgur.com/TmBLXYS.jpeg')"
+        }
+    ];
+
+    let slidesHTML = '<div class="swiper-wrapper">';
+    slidesData.forEach(slide => {
+        slidesHTML += `
+            <div class="swiper-slide" style="background-image: ${slide.bgImage}; background-size: cover; background-position: center;">
+                <h3>${slide.title}</h3>
+                <p>${slide.content}</p>
             </div>
-            <div class="swiper-slide">
-                <h3>Volunteer for cleanups in your community</h3>
-                <p>Join local efforts to clean up rivers, parks, and streets to help enhance your community's environmental health.</p>
-            </div>
-            <div class="swiper-slide">
-                <h3>Conserve water and electricity</h3>
-                <p>Reducing your consumption of water and energy reduces your carbon footprint and saves resources.</p>
-            </div>
-            <div class="swiper-slide">
-                <h3>Plant a tree</h3>
-                <p>Trees provide oxygen, improve air quality, conserve water, preserve soil, and support wildlife.</p>
-            </div>
-            <div class="swiper-slide">
-                <h3>Educate others about environmental conservation</h3>
-                <p>Spreading awareness and educating people about environmental issues is crucial for global change.</p>
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    `;
+        `;
+    });
+    slidesHTML += '</div><div class="swiper-pagination"></div>';
+    swiperContainer.innerHTML = slidesHTML;
 
     // Replace the <ul> with the swiper container
     helpSection.replaceChild(swiperContainer, helpList);
@@ -148,9 +163,14 @@ function initializeSwiper() {
     // Check if swiper is not already initialized to prevent multiple instances
     if (!window.swiperInstance) {
         window.swiperInstance = new Swiper('.swiper', {
-            loop: true,
-            slidesPerView: 1,
-            centeredSlides: true,
+            effect: "cube",
+            grabCursor: true,
+            cubeEffect: {
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
