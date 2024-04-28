@@ -57,6 +57,7 @@ section {
     border-radius: 10px; 
     transition: box-shadow 0.3s ease, transform 0.3s ease; 
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #first-article:hover, #second-article:hover {
@@ -86,6 +87,7 @@ section {
     border-radius: 10px;
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-align: center;
 }
 
 .testimonial:hover, .events:hover {
