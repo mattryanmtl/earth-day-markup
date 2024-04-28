@@ -106,23 +106,53 @@ ul {
 }
 
 .swiper {
-    width: 100%;
-    height: 150px;
+    width: 55%;
+    height: 200px;
     overflow: hidden;
 }
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    width: 100%; 
+    width: auto;
+    height: auto;
+}
+
+.swiper-slide::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position relative to the swiper-slide */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 0; /* Ensures it doesn't cover the text and other content */
+}
+
+.swiper-slide h3, .swiper-slide p {
+    position: relative; /* Ensure text appears above the overlay */
+    z-index: 1; /* Higher z-index than the overlay */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Enhances readability */
 }
 
 .swiper-wrapper {
     width: 100%;
+}
+
+.swiper-pagination {
+    padding-top: 20px; /* Adds padding above pagination, pushing it down */
+    position: absolute;
+    bottom: 0; /* Ensures pagination is at the bottom of the swiper-container */
+    width: 100%; /* Ensures the pagination spans the full width of the container */
+    text-align: center; /* Centers pagination dots */
 }
 
 .swiper-pagination-bullet {
@@ -172,8 +202,14 @@ ul {
         flex: 1 1 100%; 
    }
     .swiper-slide {
-        width: 100%;
-        padding: 10px; 
+        width: auto;
+        padding: 15px; 
+    }
+        .swiper-container {
+        margin-bottom: 20px; /* Less margin on smaller devices */
+    }
+    .swiper-pagination {
+        padding-top: 10px; /* Less padding above pagination on smaller screens */
     }
         .quizContainer {
         position: static;
