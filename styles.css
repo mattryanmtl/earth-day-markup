@@ -65,6 +65,9 @@ section {
     transform: translateY(-5px); 
 }
 
+article {
+text-align: center;
+}
 
 .article {
     background-color: white;
